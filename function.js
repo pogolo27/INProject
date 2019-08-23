@@ -1,7 +1,9 @@
 let playerPool = [];
 let hostPool = [];
-var luckValue = 0;
-var dexterityValue = 0;
+let luckValue = 2;
+let dexterityValue = 4;
+var playerRandom = 0;
+var hostRandom = 0;
 
 // ==============attributes.html======================
 
@@ -30,11 +32,13 @@ let diceRoll = () => {
 
     alert(`Fate's hands are in motion...`);
     
-    let playerRandom = Math.floor(Math.random() * 12) + 1;
-    // playerRandom += luckValue;
+    playerRandom += Math.floor(Math.random() * 12) + 1;
+    console.log(playerRandom);
+    playerRandom += luckValue;
+    console.log(playerRandom);
     playerPool.push(playerRandom);
     
-    let hostRandom = Math.floor(Math.random() * 6) + 6;
+    hostRandom += Math.floor(Math.random() * 6) + 6;
     hostPool.push(hostRandom);
 
     alert(playerRandom)
@@ -43,7 +47,9 @@ let diceRoll = () => {
 let reveal = () => {
     alert('A bit of a sleight of hand')
     
-    // playerRandom += dexterityValue;
+    console.log(playerRandom);
+    playerRandom += dexterityValue;
+    console.log(playerRandom);
     let playerDiv = document.createElement('div');  
     playerDiv.innerText = playerPool[playerPool.length - 1];
     var playerInscribe = document.getElementById("playerRoll");
@@ -75,5 +81,8 @@ let compare = () => {
     hostDiv.innerText = hostPool[hostPool.length - 1];
     var hostInscribe = document.getElementById("hostRoll");
     hostInscribe.appendChild(hostDiv);
+
+    playerRandom = 0;
+    hostRandom = 0;
 }
 
